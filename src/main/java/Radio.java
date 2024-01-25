@@ -6,66 +6,39 @@ public class Radio {
     private int maxWave = 9;
     private int currentWave = minWave;
 
-    public int getCurrentVolume() {
-        return currentVolume;
+    public Radio() {
     }
 
-    public int getMinVolume() {
-        return minVolume;
-    }
-
-    public int getMaxVolume() {
-        return maxVolume;
-    }
-
-
-    public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume < minVolume) {
-            return;
-        }
-        if (newCurrentVolume > maxVolume) {
-            return;
-        }
-        currentVolume = newCurrentVolume;
-    }
-
-    public void increaseVolume() {
-        if (currentVolume < maxVolume) {
-            currentVolume = currentVolume + 1;
-        }
-    }
-
-    public void decreaseVolume() {
-        if (currentVolume > minVolume) {
-            currentVolume = currentVolume - 1;
-        }
+    public Radio(int size) {
+        maxWave = minWave + size - 1;
     }
 
     public int getCurrentWave() {
         return currentWave;
     }
 
-    public int getMinWave() {
-        return minWave;
-    }
-
     public int getMaxWave() {
         return maxWave;
     }
 
-    public void setCurrentWave(int newCurrentWave) {
-        if (newCurrentWave < minWave) {
-            return;
-        }
-        if (newCurrentWave > maxWave) {
-            return;
-        }
-        currentWave = newCurrentWave;
+    public int getMinWave() {
+        return minWave;
     }
+
+    public void setCurrentWave(int currentWave) {
+        if (currentWave < minWave) {
+            return;
+        }
+        if (currentWave > maxWave) {
+            return;
+        }
+        this.currentWave = currentWave;
+    }
+
 
     public void next() {
         if (currentWave < maxWave) {
-            currentWave = currentWave + 1;
+            currentWave++;
         } else {
             currentWave = minWave;
         }
@@ -73,9 +46,39 @@ public class Radio {
 
     public void prev() {
         if (currentWave > minWave) {
-            currentWave = currentWave - 1;
+            currentWave--;
         } else {
             currentWave = maxWave;
+        }
+    }
+
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
+
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume < minVolume) {
+            return;
+        }
+        if (currentVolume > maxVolume) {
+            return;
+        }
+        this.currentVolume = currentVolume;
+    }
+
+    public void increaseVolume() {
+        if (currentVolume < maxVolume) {
+            currentVolume++;
+        } else {
+            currentVolume = maxVolume;
+        }
+    }
+
+    public void decreaseVolume() {
+        if (currentVolume > minVolume) {
+            currentVolume--;
+        } else {
+            currentVolume = minVolume;
         }
     }
 }
